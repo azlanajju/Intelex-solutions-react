@@ -52,58 +52,64 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "hello@intelexsolutions.com",
+      content: "info@intelexsolutions.in",
       description: "Send us an email anytime",
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+1 (555) 123-4567",
-      description: "Mon-Fri from 8am to 5pm",
+      content: "+91 9972826383",
+      description: "Primary contact number",
+    },
+    {
+      icon: Phone,
+      title: "Alternative Numbers",
+      content: "+91 6361557581, +91 8867575821",
+      description: "Additional contact numbers",
     },
     {
       icon: MapPin,
       title: "Visit Us",
-      content: "San Francisco, CA",
+      content: "India",
       description: "Come say hello at our office",
     },
   ];
 
-  const services = ["Web Development", "Mobile App Development", "UI/UX Design", "Digital Marketing", "Backend Development", "Cybersecurity", "Other"];
+  const services = ["Website Development", "AI Chatbot Integration", "Mobile App Development", "Domain & Hosting Setup", "SEO & Speed Optimization", "Maintenance & Support", "Other"];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Get In <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">Ready to transform your digital presence? Let's discuss your project and see how we can help you achieve your goals.</p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Ready to transform your digital presence? Let's discuss your project and see how we can help you achieve your goals.</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="glass-effect rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-6 text-teal-400">Send us a message</h3>
+            <h3 className="text-2xl font-bold mb-6 text-teal-600">Send us a message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Full Name *</label>
                   <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-teal-500 focus:outline-none text-gray-900" placeholder="Your full name" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Email Address *</label>
                   <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-teal-500 focus:outline-none text-gray-900" placeholder="your@email.com" />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Company</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Company</label>
                   <input type="text" name="company" value={formData.company} onChange={handleInputChange} className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-teal-500 focus:outline-none text-gray-900" placeholder="Your company name" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Service Needed</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Service Needed</label>
                   <select name="service" value={formData.service} onChange={handleInputChange} className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-teal-500 focus:outline-none text-gray-900">
                     <option value="">Select a service</option>
                     {services.map((service) => (
@@ -116,7 +122,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Project Details *</label>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Project Details *</label>
                 <textarea name="message" value={formData.message} onChange={handleInputChange} required rows={5} className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:border-teal-500 focus:outline-none text-gray-900 resize-none" placeholder="Tell us about your project, timeline, and requirements..."></textarea>
               </div>
 
@@ -130,7 +136,7 @@ const Contact = () => {
           {/* Contact Information */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="space-y-8">
             <div className="glass-effect rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6 text-teal-400">Contact Information</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-600">Contact Information</h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
@@ -139,8 +145,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">{info.title}</h4>
-                      <p className="text-teal-400 font-medium">{info.content}</p>
-                      <p className="text-gray-400 text-sm">{info.description}</p>
+                      <p className="text-teal-600 font-medium">{info.content}</p>
+                      <p className="text-gray-500 text-sm">{info.description}</p>
                     </div>
                   </div>
                 ))}
@@ -148,28 +154,28 @@ const Contact = () => {
             </div>
 
             <div className="glass-effect rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6 text-teal-400">Why Choose Intelex?</h3>
+              <h3 className="text-2xl font-bold mb-6 text-teal-600">Why Choose Intelex?</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Clock className="text-teal-400" size={20} />
-                  <span className="text-gray-300">24-hour response time</span>
+                  <Clock className="text-teal-500" size={20} />
+                  <span className="text-gray-600">24-hour response time</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <MessageCircle className="text-teal-400" size={20} />
-                  <span className="text-gray-300">Free consultation call</span>
+                  <MessageCircle className="text-teal-500" size={20} />
+                  <span className="text-gray-600">Free consultation call</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Send className="text-teal-400" size={20} />
-                  <span className="text-gray-300">Detailed project proposal</span>
+                  <Send className="text-teal-500" size={20} />
+                  <span className="text-gray-600">Detailed project proposal</span>
                 </div>
               </div>
             </div>
 
             <div className="glass-effect rounded-2xl p-8 text-center">
               <h3 className="text-xl font-bold mb-4 gradient-text">Ready to Start?</h3>
-              <p className="text-gray-300 mb-4">Get a free consultation and project estimate within 24 hours.</p>
-              <div className="text-3xl font-bold text-teal-400">100% Free</div>
-              <div className="text-gray-400">No obligations</div>
+              <p className="text-gray-600 mb-4">Get a free consultation and project estimate within 24 hours.</p>
+              <div className="text-3xl font-bold text-teal-600">100% Free</div>
+              <div className="text-gray-500">No obligations</div>
             </div>
           </motion.div>
         </div>

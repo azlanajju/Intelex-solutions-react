@@ -29,16 +29,16 @@ const Footer = () => {
 
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-gray-700">
-                  <Mail size={16} className="text-teal-400" />
-                  <span>hello@intelexsolutions.com</span>
+                  <Mail size={16} className="text-teal-500" />
+                  <span>info@intelexsolutions.in</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-700">
-                  <Phone size={16} className="text-teal-400" />
-                  <span>+1 (555) 123-4567</span>
+                  <Phone size={16} className="text-teal-500" />
+                  <span>+91 9972826383</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-700">
-                  <MapPin size={16} className="text-teal-400" />
-                  <span>San Francisco, CA</span>
+                  <MapPin size={16} className="text-teal-500" />
+                  <span>India</span>
                 </div>
               </div>
             </motion.div>
@@ -47,7 +47,7 @@ const Footer = () => {
           {/* Footer Links */}
           {Object.entries(footerLinks).map(([category, links], index) => (
             <motion.div key={category} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }}>
-              <h3 className="text-lg font-semibold text-teal-400 mb-4">{category}</h3>
+              <h3 className="text-lg font-semibold text-teal-600 mb-4">{category}</h3>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>

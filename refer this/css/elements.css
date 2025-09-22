@@ -1,0 +1,125 @@
+/* ==================== element 1 ======================== */
+
+.Element1card {
+    width: 200px;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 70%;
+    left: 30px;
+    border: 1px dashed rgba(0, 128, 128, 0.547);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+      /* Element1buttons Row */
+      .Element1buttons {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .Element1button {
+        width: 40px;
+        height: 20px;
+        background-color: rgb(88, 235, 235); 
+        border-radius: 5px;
+        border: 8px solid teal;
+      }
+      
+      /* Element1lines */
+      .Element1lines {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .Element1line {
+        height: 10px;
+        background-color: teal; /* Same purple color */
+        border-radius: 5px;
+      }
+      
+      .Element1line:nth-child(1) {
+        width: 70%;
+      }
+      
+      .Element1line:nth-child(2) {
+        width: 90%;
+      }
+      
+      .Element1line:nth-child(3) {
+        width: 50%;
+      }
+
+/* ==================== element 2 ======================== */
+      
+  .element2card {
+    width: 250px;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    border: 1px dashed rgba(0, 128, 128, 0.547);
+    animation: float 2s ease-in-out infinite;
+
+
+}
+
+.element2row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.element2avatar {
+    width: 40px ;
+    height: 35px ;
+    background-color: rgb(21, 177, 177);
+    border: 8px solid teal;
+    border-radius: 50%;
+}
+
+.element2details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.element2line {
+    height: 8px;
+    background-color: rgb(9, 160, 160); /* Brighter color for visibility */
+    border-radius: 5px;
+}
+
+.element2short {
+    width: 50%;
+}
+
+.element2long {
+    width: 80%;
+}

@@ -1,0 +1,91 @@
+
+
+.loader {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: rgba(15, 15, 15, 0.108);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    position: fixed;
+
+}
+
+.loadingBar {
+    width: 15px;
+    background-color: #008080;
+    animation: bounce 1.5s infinite ease-in-out;
+    border-radius: 10px;
+}
+
+.loadingBar:nth-child(1) {
+    height: 60px;
+    animation-delay: 0.2s;
+}
+
+.loadingBar:nth-child(2) {
+    height: 100px;
+    animation-delay: 0.4s;
+}
+
+.loadingBar:nth-child(4) {
+    height: 100px;
+    animation-delay: 0.4s;
+    background-color: #b6c2c2;
+}
+
+.loadingBar:nth-child(5) {
+    height: 60px;
+    animation-delay: 0.2s;
+    background-color: #b6c2c2;
+}
+
+.loadingBars {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;   
+    align-items: center;
+}
+
+.loadingBarM_Container {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: -20px;
+}
+
+.loadingBarMiddle {
+    height: 130px !important;
+    animation-delay: 0.3s;
+    background-color: #008080;
+}
+
+.loadingBarCircle {
+    height: 15px;
+    width: 15px;
+    background-color: #008080;
+    border-radius: 50%;
+    animation: ballBounce 1.5s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0.6);
+        border-radius:25px;
+    }
+}
+
+@keyframes ballBounce {
+    0%, 100% {
+        transform: translateY(25px);
+    }
+    50% {
+        transform: translateY(0); 
+    }
+}

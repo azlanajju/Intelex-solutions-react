@@ -39,9 +39,10 @@ body {
 }
 
 .glass-effect {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .teal-glow {
@@ -77,4 +78,29 @@ body {
 
 .scroll-smooth {
   scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for horizontal scrolling */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: rgba(20, 184, 166, 0.5);
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(20, 184, 166, 0.7);
+}
+
+/* Hide scrollbar for Firefox */
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20, 184, 166, 0.5) rgba(0, 0, 0, 0.1);
 }
