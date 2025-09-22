@@ -1,8 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
-import { createHorizontalScrollAnimation, createScrollAnimations, useGSAP } from "@/hooks/useGSAP";
+import { createScrollAnimations, useGSAP } from "@/hooks/useGSAP";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Code, Globe, Mail, MessageCircle, Search, Server, Settings, Smartphone, Users, Wrench } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
   const servicesRef = useRef();
@@ -40,20 +45,55 @@ const Services = () => {
         });
       }
     }
+  }, []);
 
-    // Horizontal scroll animation using ScrollTrigger
-    if (horizontalScrollRef.current && servicesContainerRef.current) {
-      console.log("Setting up horizontal scroll for element:", horizontalScrollRef.current);
-      console.log("Using servicesContainerRef as trigger:", servicesContainerRef.current);
-      // Add a small delay to ensure the element is properly rendered
-      setTimeout(() => {
-        createHorizontalScrollAnimation(horizontalScrollRef.current, servicesContainerRef.current);
-      }, 200);
-    } else {
-      console.log("horizontalScrollRef.current or servicesContainerRef.current is null");
-      console.log("horizontalScrollRef:", horizontalScrollRef.current);
-      console.log("servicesContainerRef:", servicesContainerRef.current);
-    }
+  // Horizontal scroll effect using direct GSAP (like in test page)
+  useEffect(() => {
+    if (!servicesContainerRef.current || !horizontalScrollRef.current) return;
+
+    // Get the total width of the horizontal content
+    const totalWidth = horizontalScrollRef.current.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    
+    // Calculate how much we need to scroll to show all cards
+    const scrollDistance = totalWidth - viewportWidth;
+
+    console.log('Services - Total width:', totalWidth);
+    console.log('Services - Viewport width:', viewportWidth);
+    console.log('Services - Scroll distance:', scrollDistance);
+
+    // Create the horizontal scroll animation with proper pinning
+    const horizontalScroll = gsap.to(horizontalScrollRef.current, {
+      x: -scrollDistance,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: servicesContainerRef.current,
+        start: 'top top', // Start when top of trigger hits top of viewport
+        end: `+=${scrollDistance}`, // End after scrolling through all cards
+        pin: true, // Pin the trigger element to stop vertical scroll
+        scrub: 1, // Smooth scrubbing
+        anticipatePin: 1, // Smooth pinning
+        invalidateOnRefresh: true, // Refresh on window resize
+        onUpdate: (self) => {
+          console.log('Services - Progress:', self.progress);
+        },
+        onEnter: () => {
+          console.log('Services - Horizontal scroll started - vertical scroll stopped');
+        },
+        onLeave: () => {
+          console.log('Services - Horizontal scroll ended - vertical scroll resumed');
+        },
+        onRefresh: () => {
+          console.log('Services - ScrollTrigger refreshed');
+        },
+      },
+    });
+
+    // Cleanup function
+    return () => {
+      horizontalScroll.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   const services = [
@@ -130,11 +170,11 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Horizontal Scrolling Services Container - Outside the container */}
-      <div ref={servicesContainerRef} className="overflow-hidden h-[500px] bg-gray-50">
-        <div ref={horizontalScrollRef} className="flex">
+      {/* Horizontal Scrolling Services Container */}
+      <div ref={servicesContainerRef} className="h-screen bg-gray-50 flex items-center" style={{ position: 'relative' }}>
+        <div ref={horizontalScrollRef} className="flex items-center horizontal-scroll-container">
           {services.map((service, index) => (
-            <div key={index} className="flex-shrink-0 px-5">
+            <div key={index} className="flex-shrink-0 mx-4">
               <div className="service-card glass-effect rounded-2xl p-8 hover:teal-glow transition-all duration-300 group w-[400px] h-[400px]">
                 <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <service.icon className="text-white" size={28} />

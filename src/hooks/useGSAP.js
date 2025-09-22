@@ -294,7 +294,7 @@ export const adjustAnimationsForScreenSize = () => {
   }
 };
 
-// Simple horizontal scroll animation
+// Horizontal scroll animation that pauses vertical scroll and converts to horizontal
 export const createHorizontalScrollAnimation = (container, triggerElement) => {
   if (!container || !triggerElement) {
     console.log("Container or trigger element not found for horizontal scroll animation");
@@ -313,21 +313,31 @@ export const createHorizontalScrollAnimation = (container, triggerElement) => {
   console.log("Viewport width:", viewportWidth);
   console.log("Scroll distance:", scrollDistance);
 
-  // Create ScrollTrigger
+  // Calculate how much scroll distance we need for horizontal scroll
+  // This should be proportional to the number of cards we want to scroll through
+  const horizontalScrollDuration = scrollDistance * 0.8; // Use 80% of the scroll distance for horizontal movement
+
+  // Create ScrollTrigger that pauses vertical scroll and converts to horizontal
   ScrollTrigger.create({
     trigger: triggerElement,
-    start: "top top",
-    end: `+=${scrollDistance}`,
+    start: "top center", // Start when top of trigger hits center of viewport
+    end: `+=${horizontalScrollDuration}`, // End after scrolling through horizontal content
     pin: true,
     scrub: 1,
+    anticipatePin: 1,
     onUpdate: (self) => {
+      // Progress goes from 0 to 1 as you scroll through the section
       const progress = self.progress;
       const x = -progress * scrollDistance;
       gsap.set(container, { x: x });
       console.log("Progress:", progress, "X:", x);
     },
-    onEnter: () => console.log("Horizontal scroll started"),
-    onLeave: () => console.log("Horizontal scroll ended"),
+    onEnter: () => {
+      console.log("Horizontal scroll started - vertical scroll paused");
+    },
+    onLeave: () => {
+      console.log("Horizontal scroll ended - vertical scroll resumed");
+    },
   });
 };
 
