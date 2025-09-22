@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
-import TestHorizontalScroll from "@/components/TestHorizontalScroll";
+import Technologies from "@/components/Technologies";
 import Testimonials from "@/components/Testimonials";
 import { Toaster } from "@/components/ui/toaster";
 import { useGSAPInit } from "@/hooks/useGSAPInit";
@@ -61,6 +61,7 @@ function App() {
       <Hero />
       <About />
       <Services />
+      <Technologies />
       <Portfolio />
       <Testimonials />
       <Contact />

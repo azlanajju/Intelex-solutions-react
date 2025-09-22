@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
 import { animateHeroText, createButtonAnimations, createFloatingAnimation, useGSAP } from "@/hooks/useGSAP";
 import { gsap } from "gsap";
 import { ArrowRight, Code, Globe, Smartphone } from "lucide-react";
@@ -15,9 +14,7 @@ const Hero = () => {
   const botImageRef = useRef();
 
   const handleGetStarted = () => {
-    toast({
-      title: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
+    window.open("tel:+1234567890", "_self");
   };
 
   const handleViewWork = () => {

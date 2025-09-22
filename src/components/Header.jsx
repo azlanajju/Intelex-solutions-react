@@ -53,7 +53,9 @@ const Header = () => {
                 {item.name}
               </motion.a>
             ))}
-            <Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full transition-all duration-300 hover:scale-105">Get Started</Button>
+            <Button onClick={() => window.open("tel:+1234567890", "_self")} className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full transition-all duration-300 hover:scale-105">
+              Get Started
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -70,7 +72,9 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            <Button className="w-full mt-4 bg-teal-600 hover:bg-teal-700 text-white transition-all duration-300">Get Started</Button>
+            <Button onClick={() => window.open("tel:+1234567890", "_self")} className="w-full mt-4 bg-teal-600 hover:bg-teal-700 text-white transition-all duration-300">
+              Get Started
+            </Button>
           </motion.div>
         )}
       </nav>

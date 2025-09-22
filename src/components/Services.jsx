@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
 import { createScrollAnimations, useGSAP } from "@/hooks/useGSAP";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,12 +12,6 @@ const Services = () => {
   const headerRef = useRef();
   const servicesContainerRef = useRef();
   const horizontalScrollRef = useRef();
-
-  const handleLearnMore = () => {
-    toast({
-      title: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
-  };
 
   // GSAP Animations
   useGSAP(() => {
@@ -54,37 +46,37 @@ const Services = () => {
     // Get the total width of the horizontal content
     const totalWidth = horizontalScrollRef.current.scrollWidth;
     const viewportWidth = window.innerWidth;
-    
+
     // Calculate how much we need to scroll to show all cards
     const scrollDistance = totalWidth - viewportWidth;
 
-    console.log('Services - Total width:', totalWidth);
-    console.log('Services - Viewport width:', viewportWidth);
-    console.log('Services - Scroll distance:', scrollDistance);
+    console.log("Services - Total width:", totalWidth);
+    console.log("Services - Viewport width:", viewportWidth);
+    console.log("Services - Scroll distance:", scrollDistance);
 
     // Create the horizontal scroll animation with proper pinning
     const horizontalScroll = gsap.to(horizontalScrollRef.current, {
       x: -scrollDistance,
-      ease: 'none',
+      ease: "none",
       scrollTrigger: {
         trigger: servicesContainerRef.current,
-        start: 'top top', // Start when top of trigger hits top of viewport
+        start: "top top", // Start when top of trigger hits top of viewport
         end: `+=${scrollDistance}`, // End after scrolling through all cards
         pin: true, // Pin the trigger element to stop vertical scroll
         scrub: 1, // Smooth scrubbing
         anticipatePin: 1, // Smooth pinning
         invalidateOnRefresh: true, // Refresh on window resize
         onUpdate: (self) => {
-          console.log('Services - Progress:', self.progress);
+          console.log("Services - Progress:", self.progress);
         },
         onEnter: () => {
-          console.log('Services - Horizontal scroll started - vertical scroll stopped');
+          console.log("Services - Horizontal scroll started - vertical scroll stopped");
         },
         onLeave: () => {
-          console.log('Services - Horizontal scroll ended - vertical scroll resumed');
+          console.log("Services - Horizontal scroll ended - vertical scroll resumed");
         },
         onRefresh: () => {
-          console.log('Services - ScrollTrigger refreshed');
+          console.log("Services - ScrollTrigger refreshed");
         },
       },
     });
@@ -92,7 +84,7 @@ const Services = () => {
     // Cleanup function
     return () => {
       horizontalScroll.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -171,7 +163,7 @@ const Services = () => {
       </div>
 
       {/* Horizontal Scrolling Services Container */}
-      <div ref={servicesContainerRef} className="h-screen bg-gray-50 flex items-center" style={{ position: 'relative' }}>
+      <div ref={servicesContainerRef} className="h-screen bg-gray-50 flex items-center" style={{ position: "relative" }}>
         <div ref={horizontalScrollRef} className="flex items-center horizontal-scroll-container">
           {services.map((service, index) => (
             <div key={index} className="flex-shrink-0 mx-4">
@@ -183,7 +175,7 @@ const Services = () => {
                 <h3 className="text-2xl font-bold mb-4 text-teal-600">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
 
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm text-gray-500">
                       <div className="w-1.5 h-1.5 bg-teal-500 rounded-full mr-3"></div>
@@ -191,10 +183,6 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
-
-                <Button onClick={handleLearnMore} variant="outline" className="w-full border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white">
-                  Learn More
-                </Button>
               </div>
             </div>
           ))}
